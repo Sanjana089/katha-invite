@@ -1,0 +1,211 @@
+.book {
+    position: relative;
+    width: 30rem;
+    height: 90vh;
+    margin: 2em auto;
+    overflow: visible;
+    cursor: pointer;
+    transition: all 0.5s linear;
+}
+
+.cover,
+.page,
+.page2 {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    transform-origin: left center;
+    transition: inherit;
+    box-shadow: 1px 1px 2px 0px rgba(0, 0, 0, 0.2);
+}
+
+.cover {
+    z-index: 100;
+    transform: perspective(700px) rotateY(0deg);
+    background: rgb(239, 248, 234) linear-gradient(90deg,
+            transparent 3%,
+            rgba(0, 0, 0, 0.1) 5%,
+            transparent 6%);
+
+    h1 {
+        font-size: 2.2em;
+        font-family: 'UnifrakturCook', cursive;
+        padding: 0.5em;
+        text-align: center;
+        color: #fff;
+    }
+
+    h2 {
+        font-family: 'UnifrakturCook', cursive;
+        padding: 0.5em;
+        text-align: center;
+        color: #fff;
+    }
+}
+
+.cover-image {
+    width: 95%;
+    height: 100%;
+    float: right;
+}
+
+.page,
+.page2 {
+    padding: 1.1em;
+    font-family: 'PT Serif', serif;
+    font-size: 0.65em;
+    line-height: 1.2em;
+    color: #222;
+
+    &:before {
+        content: '';
+        height: 100%;
+        position: absolute;
+        width: 0;
+        top: 0;
+        background-color: rgba(0, 0, 0, 0.1);
+        transition: inherit;
+    }
+
+    &:after {
+        content: '';
+        width: 100%;
+        height: 0;
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        border-radius: 50%;
+        border: solid 0px transparent;
+        border-top-color: rgba(0, 0, 0, 0.2);
+        transition: inherit;
+        box-shadow: 0px -13.5rem 0px 0px #fff;
+    }
+
+    &:nth-child(2) {
+        transform: perspective(700px) rotateY(180deg) translateX(-100%);
+        background: rgb(239, 248, 234);
+        box-shadow: -1px 1px 2px 0px rgba(0, 0, 0, 0.2);
+
+        &:before {
+            left: 0;
+        }
+
+        &:after {
+            left: 1px;
+        }
+    }
+
+    &:nth-child(3) {
+        background: rgb(239, 248, 234);
+        border-left: solid 1px rgba(0, 0, 0, 0.2);
+
+        &:before {
+            right: 0;
+        }
+
+        &:after {
+            left: -1px;
+        }
+    }
+
+    h2 {
+        margin: 0 0 0.6em 0;
+        font-family: 'UnifrakturCook', cursive;
+        font-size: 1.45em;
+        line-height: 1em;
+        text-align: center;
+
+        &+p:first-letter {
+            font-family: 'UnifrakturCook', cursive;
+            font-size: 2.2em;
+            line-height: 0.6em;
+            color: #333;
+            padding: 5px 2px 0 0;
+            float: left;
+        }
+    }
+
+    p {
+        text-align: justify;
+        margin: 0 0 0.5em;
+    }
+
+    img {
+        width: 100%;
+        /* float: right; */
+        padding: 0 0 0px 4px;
+    }
+}
+
+.open {
+    /* transform: translateX(50%); */
+
+    .cover {
+        transform: perspective(700px) rotateY(-180deg);
+    }
+
+    .page {
+        &:nth-child(2) {
+            z-index: 200;
+            transform: perspective(700px) rotateY(0deg) translateX(-100%);
+        }
+
+        &:before {
+            width: 3px;
+        }
+
+        &:after {
+            border-width: 3px;
+            bottom: -3px;
+        }
+    }
+}
+
+.open2 {
+    /* transform: translateX(50%); */
+
+    .page {
+        transform: perspective(700px) rotateY(-180deg);
+    }
+
+    .page2 {
+        &:nth-child(2) {
+            z-index: 200;
+            transform: perspective(700px) rotateY(0deg) translateX(-100%);
+        }
+
+        &:before {
+            width: 3px;
+        }
+
+        &:after {
+            border-width: 3px;
+            bottom: -3px;
+        }
+    }
+}
+
+body {
+    background-color: #939393;
+}
+
+*,
+*:before,
+*:after {
+    box-sizing: border-box;
+}
+
+@media (max-width: 768px) {
+    body {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+    }
+
+    .book {
+        width: 23rem;
+        height: 70vh;
+    }
+}
