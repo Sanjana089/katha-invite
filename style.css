@@ -6,6 +6,8 @@
     overflow: visible;
     cursor: pointer;
     transition: all 0.5s linear;
+    /* Remove blue highlighting effect */
+    -webkit-tap-highlight-color: transparent;
 }
 
 .cover,
@@ -133,7 +135,7 @@
 
     img {
         width: 100%;
-        /* float: right; */
+        height: 55%;
         padding: 0 0 0px 4px;
     }
 }
@@ -155,10 +157,10 @@
             width: 3px;
         }
 
-        &:after {
+        /* &:after {
             border-width: 3px;
             bottom: -3px;
-        }
+        } */
     }
 }
 
@@ -184,6 +186,14 @@
             bottom: -3px;
         }
     }
+}
+
+.image-blurred-edge {
+    background-image: url('https://i.pinimg.com/originals/31/55/c0/3155c07947f914db3b6f903d4ce25858.gif');
+    width: 100%;
+        height: 55%;
+    /* you need to match the shadow color to your background or image border for the desired effect*/
+    box-shadow: 0 0 8px 8px rgb(239, 248, 234) inset;
 }
 
 body {

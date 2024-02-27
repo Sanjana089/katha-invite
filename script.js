@@ -1,4 +1,5 @@
 document.getElementById('book').addEventListener('click', function() {
+    /*
     if (this.classList.contains('close')) {
       this.classList.remove('close');
       this.classList.add('open');
@@ -9,5 +10,8 @@ document.getElementById('book').addEventListener('click', function() {
       this.classList.remove('open2');
       this.classList.add('close');
     }
+    */
+
+    this.classList.toggle('open');
   });
   
